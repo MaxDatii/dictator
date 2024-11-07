@@ -24,12 +24,12 @@ const weapons = [
 ];
 const mobsters = [
   {
-    name: "slime",
+    name: "corruptionist",
     level: 2,
     health: 15
   },
   {
-    name: "fanged beast",
+    name: "mobster",
     level: 8,
     health: 60
   },
@@ -54,8 +54,8 @@ const locations = [
   },
   {
     name: "bunker",
-    "button text": ["Fight slime", "Fight fanged beast", "Go to town square"],
-    "button functions": [fightSlime, fightBeast, goTown],
+    "button text": ["Fight corruptionist", "Fight mobster", "Go to town square"],
+    "button functions": [fightCorruptionist, fightMobster, goTown],
     text: "You enter the bunker. You see some mobsters."
   },
   {
@@ -161,12 +161,12 @@ function sellWeapon() {
   }
 }
 
-function fightSlime() {
+function fightCorruptionist() {
   fighting = 0;
   goFight();
 }
 
-function fightBeast() {
+function fightMobster() {
   fighting = 1;
   goFight();
 }
