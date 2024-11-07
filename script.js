@@ -187,8 +187,8 @@ function goFight() {
 function attack() {
   text.innerText = "The " + mobsters[fighting].name + " attacks.";
   text.innerText += " You attack it with your " + weapons[currentWeapon].name + ".";
-  health -= getmobsterAttackValue(mobsters[fighting].level);
-  if (ismobsterHit()) {
+  health -= getMobsterAttackValue(mobsters[fighting].level);
+  if (isMobsterHit()) {
     mobsterHealth -= weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1;    
   } else {
     text.innerText += " You miss.";
@@ -201,7 +201,7 @@ function attack() {
     if (fighting === 2) {
       winGame();
     } else {
-      defeatmobster();
+      defeatMobster();
     }
   }
   if (Math.random() <= .1 && inventory.length !== 1) {
@@ -210,13 +210,13 @@ function attack() {
   }
 }
 
-function getmobsterAttackValue(level) {
+function getMobsterAttackValue(level) {
   const hit = (level * 5) - (Math.floor(Math.random() * xp));
   console.log(hit);
   return hit > 0 ? hit : 0;
 }
 
-function ismobsterHit() {
+function isMobsterHit() {
   return Math.random() > .2 || health < 20;
 }
 
@@ -224,7 +224,7 @@ function dodge() {
   text.innerText = "You dodge the attack from the " + mobsters[fighting].name;
 }
 
-function defeatmobster() {
+function defeatMobster() {
   influence += Math.floor(mobsters[fighting].level * 6.7);
   xp += mobsters[fighting].level;
   influenceText.innerText = influence;
