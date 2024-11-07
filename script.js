@@ -3,7 +3,7 @@ let health = 100;
 let influence = 50;
 let currentWeapon = 0;
 let fighting;
-let monsterHealth;
+let mobsterHealth;
 let inventory = ["stick"];
 
 const button1 = document.querySelector('#button1');
@@ -13,16 +13,16 @@ const text = document.querySelector("#text");
 const xpText = document.querySelector("#xpText");
 const healthText = document.querySelector("#healthText");
 const influenceText = document.querySelector("#influenceText");
-const monsterStats = document.querySelector("#monsterStats");
-const monsterName = document.querySelector("#monsterName");
-const monsterHealthText = document.querySelector("#monsterHealth");
+const mobsterStats = document.querySelector("#mobsterStats");
+const mobsterName = document.querySelector("#mobsterName");
+const mobsterHealthText = document.querySelector("#mobsterHealth");
 const weapons = [
   { name: 'stick', power: 5 },
   { name: 'dagger', power: 30 },
   { name: 'claw hammer', power: 50 },
   { name: 'sword', power: 100 }
 ];
-const monsters = [
+const mobsters = [
   {
     name: "slime",
     level: 2,
@@ -34,7 +34,7 @@ const monsters = [
     health: 60
   },
   {
-    name: "dragon",
+    name: "dictator",
     level: 20,
     health: 300
   }
@@ -42,8 +42,8 @@ const monsters = [
 const locations = [
   {
     name: "town square",
-    "button text": ["Go to store", "Go to bunker", "Fight dragon"],
-    "button functions": [goStore, gobunker, fightDragon],
+    "button text": ["Go to store", "Go to bunker", "Fight dictator"],
+    "button functions": [goStore, gobunker, fightDictator],
     text: "You are in the town square. You see a sign that says \"Store\"."
   },
   {
@@ -62,13 +62,13 @@ const locations = [
     name: "fight",
     "button text": ["Attack", "Dodge", "Run"],
     "button functions": [attack, dodge, goTown],
-    text: "You are fighting a monster."
+    text: "You are fighting a mobster."
   },
   {
-    name: "kill monster",
+    name: "kill mobster",
     "button text": ["Go to town square", "Go to town square", "Go to town square"],
     "button functions": [goTown, goTown, easterEgg],
-    text: 'The monster screams "Arg!" as it dies. You gain experience points and influence.'
+    text: 'The mobster screams "Arg!" as it dies. You gain experience points and influence.'
   },
   {
     name: "lose",
@@ -80,7 +80,7 @@ const locations = [
     name: "win", 
     "button text": ["REPLAY?", "REPLAY?", "REPLAY?"], 
     "button functions": [restart, restart, restart], 
-    text: "You defeat the dragon! YOU WIN THE GAME! &#x1F389;" 
+    text: "You defeat the dictator! YOU WIN THE GAME! &#x1F389;" 
   },
   {
     name: "easter egg",
@@ -93,10 +93,10 @@ const locations = [
 // initialize buttons
 button1.onclick = goStore;
 button2.onclick = gobunker;
-button3.onclick = fightDragon;
+button3.onclick = fightDictator;
 
 function update(location) {
-  monsterStats.style.display = "none";
+  mobsterStats.style.display = "none";
   button1.innerText = location["button text"][0];
   button2.innerText = location["button text"][1];
   button3.innerText = location["button text"][2];
@@ -171,37 +171,37 @@ function fightBeast() {
   goFight();
 }
 
-function fightDragon() {
+function fightDictator() {
   fighting = 2;
   goFight();
 }
 
 function goFight() {
   update(locations[3]);
-  monsterHealth = monsters[fighting].health;
-  monsterStats.style.display = "block";
-  monsterName.innerText = monsters[fighting].name;
-  monsterHealthText.innerText = monsterHealth;
+  mobsterHealth = mobsters[fighting].health;
+  mobsterStats.style.display = "block";
+  mobsterName.innerText = mobsters[fighting].name;
+  mobsterHealthText.innerText = mobsterHealth;
 }
 
 function attack() {
-  text.innerText = "The " + monsters[fighting].name + " attacks.";
+  text.innerText = "The " + mobsters[fighting].name + " attacks.";
   text.innerText += " You attack it with your " + weapons[currentWeapon].name + ".";
-  health -= getMonsterAttackValue(monsters[fighting].level);
-  if (isMonsterHit()) {
-    monsterHealth -= weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1;    
+  health -= getmobsterAttackValue(mobsters[fighting].level);
+  if (ismobsterHit()) {
+    mobsterHealth -= weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1;    
   } else {
     text.innerText += " You miss.";
   }
   healthText.innerText = health;
-  monsterHealthText.innerText = monsterHealth;
+  mobsterHealthText.innerText = mobsterHealth;
   if (health <= 0) {
     lose();
-  } else if (monsterHealth <= 0) {
+  } else if (mobsterHealth <= 0) {
     if (fighting === 2) {
       winGame();
     } else {
-      defeatMonster();
+      defeatmobster();
     }
   }
   if (Math.random() <= .1 && inventory.length !== 1) {
@@ -210,23 +210,23 @@ function attack() {
   }
 }
 
-function getMonsterAttackValue(level) {
+function getmobsterAttackValue(level) {
   const hit = (level * 5) - (Math.floor(Math.random() * xp));
   console.log(hit);
   return hit > 0 ? hit : 0;
 }
 
-function isMonsterHit() {
+function ismobsterHit() {
   return Math.random() > .2 || health < 20;
 }
 
 function dodge() {
-  text.innerText = "You dodge the attack from the " + monsters[fighting].name;
+  text.innerText = "You dodge the attack from the " + mobsters[fighting].name;
 }
 
-function defeatMonster() {
-  influence += Math.floor(monsters[fighting].level * 6.7);
-  xp += monsters[fighting].level;
+function defeatmobster() {
+  influence += Math.floor(mobsters[fighting].level * 6.7);
+  xp += mobsters[fighting].level;
   influenceText.innerText = influence;
   xpText.innerText = xp;
   update(locations[4]);
