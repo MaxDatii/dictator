@@ -136,7 +136,7 @@ function buyWeapon() {
       currentWeapon++;
       influenceText.innerText = influence;
       let newWeapon = weapons[currentWeapon].name;
-      text.innerText = "You now have a " + newWeapon + ".";
+      text.innerText = "You now have " + newWeapon + ".";
       inventory.push(newWeapon);
       text.innerText += " In your inventory you have: " + inventory;
     } else {
