@@ -3,7 +3,7 @@ let health = 100;
 let influence = 50;
 let currentWeapon = 0;
 let fighting;
-let mobsterHealth;
+let villainHealth;
 let inventory = ["arguments"];
 
 const button1 = document.querySelector('#button1');
@@ -13,23 +13,23 @@ const text = document.querySelector("#text");
 const xpText = document.querySelector("#xpText");
 const healthText = document.querySelector("#healthText");
 const influenceText = document.querySelector("#influenceText");
-const mobsterStats = document.querySelector("#mobsterStats");
-const mobsterName = document.querySelector("#mobsterName");
-const mobsterHealthText = document.querySelector("#mobsterHealth");
+const villainStats = document.querySelector("#villainStats");
+const villainName = document.querySelector("#villainName");
+const villainHealthText = document.querySelector("#villainHealth");
 const weapons = [
   { name: ' arguments', power: 5 },
   { name: ' facts', power: 30 },
   { name: ' hammer of truth', power: 50 },
   { name: ' sword of justice', power: 100 }
 ];
-const mobsters = [
+const villains = [
   {
     name: "corruptionist",
     level: 2,
     health: 15
   },
   {
-    name: "mobster",
+    name: "propagandist",
     level: 8,
     health: 60
   },
@@ -54,21 +54,21 @@ const locations = [
   },
   {
     name: "bunker",
-    "button text": ["Fight corruptionist", "Fight mobster", "Go to town square"],
-    "button functions": [fightCorruptionist, fightMobster, goTown],
-    text: "You enter the bunker. You see some mobsters."
+    "button text": ["Fight corruptionist", "Fight propagandist", "Go to town square"],
+    "button functions": [fightCorruptionist, fightPropagandist, goTown],
+    text: "You enter the bunker. You see some villains."
   },
   {
     name: "fight",
     "button text": ["Attack", "Dodge", "Run"],
     "button functions": [attack, dodge, goTown],
-    text: "You are fighting a mobster."
+    text: "You are fighting a villain."
   },
   {
-    name: "kill mobster",
+    name: "kill villain",
     "button text": ["Go to town square", "Go to town square", "Go to town square"],
     "button functions": [goTown, goTown, easterEgg],
-    text: 'The mobster screams "Arg!" as it dies. You gain experience points and influence.'
+    text: 'The villain screams "Arg!" as it dies. You gain experience points and influence.'
   },
   {
     name: "lose",
@@ -96,7 +96,7 @@ button2.onclick = gobunker;
 button3.onclick = fightDictator;
 
 function update(location) {
-  mobsterStats.style.display = "none";
+  villainStats.style.display = "none";
   button1.innerText = location["button text"][0];
   button2.innerText = location["button text"][1];
   button3.innerText = location["button text"][2];
@@ -166,7 +166,7 @@ function fightCorruptionist() {
   goFight();
 }
 
-function fightMobster() {
+function fightPropagandist() {
   fighting = 1;
   goFight();
 }
@@ -178,30 +178,30 @@ function fightDictator() {
 
 function goFight() {
   update(locations[3]);
-  mobsterHealth = mobsters[fighting].health;
-  mobsterStats.style.display = "block";
-  mobsterName.innerText = mobsters[fighting].name;
-  mobsterHealthText.innerText = mobsterHealth;
+  villainHealth = villains[fighting].health;
+  villainStats.style.display = "block";
+  villainName.innerText = villains[fighting].name;
+  villainHealthText.innerText = villainHealth;
 }
 
 function attack() {
-  text.innerText = "The " + mobsters[fighting].name + " attacks.";
+  text.innerText = "The " + villains[fighting].name + " attacks.";
   text.innerText += " You attack it with your " + weapons[currentWeapon].name + ".";
-  health -= getMobsterAttackValue(mobsters[fighting].level);
-  if (isMobsterHit()) {
-    mobsterHealth -= weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1;    
+  health -= getVillainAttackValue(villains[fighting].level);
+  if (isVillainHit()) {
+    villainHealth -= weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1;    
   } else {
     text.innerText += " You miss.";
   }
   healthText.innerText = health;
-  mobsterHealthText.innerText = mobsterHealth;
+  villainHealthText.innerText = villainHealth;
   if (health <= 0) {
     lose();
-  } else if (mobsterHealth <= 0) {
+  } else if (villainHealth <= 0) {
     if (fighting === 2) {
       winGame();
     } else {
-      defeatMobster();
+      defeatVillain();
     }
   }
   if (Math.random() <= .1 && inventory.length !== 1) {
@@ -210,23 +210,23 @@ function attack() {
   }
 }
 
-function getMobsterAttackValue(level) {
+function getVillainAttackValue(level) {
   const hit = (level * 5) - (Math.floor(Math.random() * xp));
   console.log(hit);
   return hit > 0 ? hit : 0;
 }
 
-function isMobsterHit() {
+function isVillainHit() {
   return Math.random() > .2 || health < 20;
 }
 
 function dodge() {
-  text.innerText = "You dodge the attack from the " + mobsters[fighting].name;
+  text.innerText = "You dodge the attack from the " + villains[fighting].name;
 }
 
-function defeatMobster() {
-  influence += Math.floor(mobsters[fighting].level * 6.7);
-  xp += mobsters[fighting].level;
+function defeatVillain() {
+  influence += Math.floor(villains[fighting].level * 6.7);
+  xp += villains[fighting].level;
   influenceText.innerText = influence;
   xpText.innerText = xp;
   update(locations[4]);
