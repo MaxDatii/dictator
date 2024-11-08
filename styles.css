@@ -65,11 +65,14 @@ body {
     }
   
     #controls, #stats {
-      flex-direction: column;  /* Stack buttons vertically on small screens */
+      flex-direction: column; /* Stacks buttons vertically on small screens */
       align-items: center;
     }
   
     button {
-      width: 80%;   /* Make buttons wider for better touch targets on mobile */
+      width: 80%;              /* Keeps buttons wide for touch accessibility */
+      font-size: 2.5vw;        /* Adjust font size for small screens */
+      padding: 1vh 2vw;        /* Adjust padding for better touch targets */
+      margin-bottom: 1vh;      /* Adds space between buttons when stacked */
     }
   }  
