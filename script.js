@@ -17,10 +17,10 @@ const mobsterStats = document.querySelector("#mobsterStats");
 const mobsterName = document.querySelector("#mobsterName");
 const mobsterHealthText = document.querySelector("#mobsterHealth");
 const weapons = [
-  { name: 'arguments', power: 5 },
-  { name: 'facts', power: 30 },
-  { name: 'hammer of truth', power: 50 },
-  { name: 'sword of justice', power: 100 }
+  { name: ' arguments', power: 5 },
+  { name: ' facts', power: 30 },
+  { name: ' hammer of truth', power: 50 },
+  { name: ' sword of justice', power: 100 }
 ];
 const mobsters = [
   {
