@@ -4,7 +4,7 @@ let influence = 50;
 let currentWeapon = 0;
 let fighting;
 let mobsterHealth;
-let inventory = ["stick"];
+let inventory = ["arguments"];
 
 const button1 = document.querySelector('#button1');
 const button2 = document.querySelector("#button2");
@@ -17,10 +17,10 @@ const mobsterStats = document.querySelector("#mobsterStats");
 const mobsterName = document.querySelector("#mobsterName");
 const mobsterHealthText = document.querySelector("#mobsterHealth");
 const weapons = [
-  { name: 'stick', power: 5 },
-  { name: 'dagger', power: 30 },
-  { name: 'claw hammer', power: 50 },
-  { name: 'sword', power: 100 }
+  { name: 'arguments', power: 5 },
+  { name: 'facts', power: 30 },
+  { name: 'hammer of truth', power: 50 },
+  { name: 'sword of justice', power: 100 }
 ];
 const mobsters = [
   {
@@ -245,7 +245,7 @@ function restart() {
   health = 100;
   influence = 50;
   currentWeapon = 0;
-  inventory = ["stick"];
+  inventory = ["arguments"];
   influenceText.innerText = influence;
   healthText.innerText = health;
   xpText.innerText = xp;
