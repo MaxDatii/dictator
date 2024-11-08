@@ -286,3 +286,19 @@ function pick(guess) {
     }
   }
 }
+
+window.addEventListener('resize', adjustGameLayout);
+
+function adjustGameLayout() {
+  const gameElement = document.getElementById('game');
+  const isMobile = window.innerWidth < 600;
+
+  if (isMobile) {
+    gameElement.style.padding = "5vw"; // Adjust padding for smaller screens
+  } else {
+    gameElement.style.padding = "2vw"; // Padding for larger screens
+  }
+}
+
+// Initial call to set the layout based on the current screen size
+adjustGameLayout();
