@@ -76,3 +76,18 @@ body {
       margin-bottom: 1vh;      /* Adds space between buttons when stacked */
     }
   }  
+
+  #footer {
+    text-align: center;
+    color: #ffffff;
+    background-color: #0a0a23;
+    padding: 1vh;
+    font-size: 1.5vw;
+    margin-top: 2vh; /* Adds space above the footer */
+  }
+  
+  @media (max-width: 600px) {
+    #footer {
+      font-size: 3vw; /* Increases font size on smaller screens for readability */
+    }
+  }
