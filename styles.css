@@ -137,3 +137,22 @@ button {
     font-size: 4vw; /* Increase scaling effect on very small screens */
   }
 }
+
+/* Adjust font size for stat elements on small screens */
+.stat {
+  font-size: 1.5vw; /* Default size for larger screens */
+}
+
+/* Increase stat font size on smaller screens */
+@media (max-width: 600px) {
+  .stat {
+    font-size: 4vw; /* Makes stats more prominent on small screens */
+  }
+}
+
+/* Additional media query for very small screens */
+@media (max-width: 400px) {
+  .stat {
+    font-size: 5vw; /* Further increases font size for ultra-small screens */
+  }
+}
