@@ -1,93 +1,139 @@
+/* Base styling */
 body {
-    background-color: #0a0a23;
-  }
-  
-  #text {
-    background-color: #0a0a23;
-    color: #ffffff;
-    padding: 10px;
-  }
+  background-color: #0a0a23;
+}
 
-  body, #text {
-    font-size: 2vw;    /* Sets text size relative to viewport width */
-    padding: 1vw;
-  }
-  
+#text {
+  background-color: #0a0a23;
+  color: #ffffff;
+  padding: 10px;
+}
+
+body, #text {
+  font-size: 2vw;
+  padding: 1vw;
+}
+
+/* Game container styling */
+#game {
+  max-width: 90vw;
+  max-height: 80vh;
+  background-color: #ffffff;
+  color: #ffffff;
+  margin: 5vh auto;
+  padding: 2vw;
+  box-sizing: border-box;
+}
+
+/* Flex styling for controls and stats */
+#controls, #stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 1vw;
+  color: #0a0a23;
+  border: 1px solid #0a0a23;
+}
+
+#villainStats {
+  display: none;
+  border: 1px solid #0a0a23;
+  padding: 5px;
+  color: #ffffff;
+  background-color: #c70d0d;
+}
+
+.stat {
+  padding-right: 10px;
+}
+
+/* Button styling */
+button {
+  cursor: pointer;
+  color: #0a0a23;
+  background-color: #feac32;
+  background-image: linear-gradient(#fecc4c, #ffac33);
+  border: 3px solid #feac32;
+  font-size: 1.8vw;
+  padding: 1vh 2vw;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 600px) {
   #game {
-    max-width: 90vw;    /* Sets a maximum width as a percentage of viewport width */
-    max-height: 80vh;   /* Sets a maximum height as a percentage of viewport height */
-    background-color: #ffffff;
-    color: #ffffff;
-    margin: 5vh auto;   /* Centers the container with margin based on viewport height */
-    padding: 2vw;       /* Padding relative to viewport width for consistent spacing */
-    box-sizing: border-box; /* Ensures padding doesn't add to the width */
+    max-width: 100vw;
+    max-height: 90vh;
+    margin: 2vh auto;
   }
-  
+
   #controls, #stats {
-    display: flex;
-    flex-wrap: wrap;         /* Wrap items onto new lines on smaller screens */
-    justify-content: space-around; /* Distribute buttons or stats evenly */
-    padding: 1vw;
-    color: #0a0a23;
-    border: 1px solid #0a0a23;
-  }
-  
-  #villainStats {
-    display: none;
-    border: 1px solid #0a0a23;
-    padding: 5px;
-    color: #ffffff;
-    background-color: #c70d0d;
-  }
-  
-  .stat {
-    padding-right: 10px;
-  }
-  
-  button {
-    cursor: pointer;
-    color: #0a0a23;
-    background-color: #feac32;
-    background-image: linear-gradient(#fecc4c, #ffac33);
-    border: 3px solid #feac32;
+    flex-direction: column;
+    align-items: center;
   }
 
   button {
-    font-size: 1.8vw;
-    padding: 1vh 2vw; /* Adjusts button padding for better touch targeting on mobile */
+    width: 80%;
+    font-size: 2.5vw;
+    padding: 1vh 2vw;
+    margin-bottom: 1vh;
   }
+}
 
-  @media (max-width: 600px) {
-    #game {
-      max-width: 100vw;
-      max-height: 90vh;
-      margin: 2vh auto;
-    }
-  
-    #controls, #stats {
-      flex-direction: column; /* Stacks buttons vertically on small screens */
-      align-items: center;
-    }
-  
-    button {
-      width: 80%;              /* Keeps buttons wide for touch accessibility */
-      font-size: 2.5vw;        /* Adjust font size for small screens */
-      padding: 1vh 2vw;        /* Adjust padding for better touch targets */
-      margin-bottom: 1vh;      /* Adds space between buttons when stacked */
-    }
-  }  
+#footer {
+  text-align: center;
+  color: #ffffff;
+  background-color: #0a0a23;
+  padding: 1vh;
+  font-size: 1.5vw;
+  margin-top: 2vh;
+}
 
+@media (max-width: 600px) {
   #footer {
-    text-align: center;
-    color: #ffffff;
-    background-color: #0a0a23;
-    padding: 1vh;
-    font-size: 1.5vw;
-    margin-top: 2vh; /* Adds space above the footer */
+    font-size: 3vw;
+  }
+}
+
+/* Logo container styling */
+#logo-container {
+  position: relative;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 20px;
+}
+
+#game-logo {
+  width: 20vw;
+  max-width: 150px;
+  background-color: #0a0a23;
+  border-radius: 10%;
+}
+
+@media (max-width: 600px) {
+  #game-logo {
+    width: 30vw;
+    max-width: 100px;
+  }
+}
+
+/* Media query for landscape mode with small screen height */
+@media (max-height: 500px) {
+  body, #text {
+    font-size: 1.5vw; /* Reduce font size in landscape mode with limited height */
   }
   
-  @media (max-width: 600px) {
-    #footer {
-      font-size: 3vw; /* Increases font size on smaller screens for readability */
-    }
+  #footer {
+    font-size: 2.5vw; /* Scale footer font size down for landscape mode */
   }
+
+  button {
+    font-size: 2vw; /* Scale down button font size */
+  }
+}
+
+/* Additional adjustment for extra small screens if needed */
+@media (max-width: 400px) {
+  #footer {
+    font-size: 4vw; /* Increase scaling effect on very small screens */
+  }
+}

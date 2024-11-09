@@ -1,5 +1,5 @@
 # dictator
-Welcome to "The Dictator" game, where bravery meets power. Your mission is to dismantle the forces of corruption and challenge the ultimate Dictator himself in the depths of the bunker. Help citizens reclaim peace and happiness in their country.<br><br> 
+Welcome to "Dictator" game, where bravery meets power. Your mission is to dismantle the forces of corruption and challenge the ultimate Dictator himself in the depths of the bunker. Help citizens reclaim peace and happiness in their country.<br><br> 
 
 Characters:<br>
 The Corruptionist: a shadowy figure who thrives on the power of manipulation. Prepare to expose their hidden deals!
