@@ -156,3 +156,22 @@ button {
     font-size: 5vw; /* Further increases font size for ultra-small screens */
   }
 }
+
+/* Default text size for larger screens */
+#text {
+  font-size: 2vw; /* Text size relative to viewport width */
+}
+
+/* Increase font size for #text on smaller screens */
+@media (max-width: 600px) {
+  #text {
+    font-size: 4vw; /* Makes text more readable on mobile screens */
+  }
+}
+
+/* Additional adjustment for very small screens */
+@media (max-width: 400px) {
+  #text {
+    font-size: 5vw; /* Further increases font size for ultra-small screens */
+  }
+}
